@@ -11,4 +11,13 @@ export class UserDto {
   @IsNotEmpty()
   @MinLength(6)
   readonly password: string;
+
+  @IsNotEmpty()
+  readonly genderId: number;
+
+  @IsNotEmpty()
+  readonly roleId: number;
+
+  @IsNotEmpty()
+  readonly countryId: number;
 }

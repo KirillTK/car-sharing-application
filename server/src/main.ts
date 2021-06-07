@@ -9,6 +9,6 @@ async function bootstrap() {
 
   // handle all user input validation globally
   app.useGlobalPipes(new ValidateInputPipe());
-  await app.listen(process.env.PORT || 8080);
+  await app.listen(8080);
 }
 bootstrap();

@@ -37,7 +37,7 @@ export class AuthService {
       throw new BadRequestException('Invalid credentions');
     }
 
-    const token = await this.generateToken(user);
+    const token = await this.generateToken(userDb['dataValues']);
     return { userDb, token };
   }
 
@@ -46,21 +46,20 @@ export class AuthService {
     const pass = await this.hashPassword(user.password);
 
     // create the user
-    const newUser = await this.userService.create({
+    await this.userService.create({
       ...user,
       password: pass,
-      roleId: 1,
-      genderId: 1,
     });
 
-    // tslint:disable-next-line: no-string-literal
-    const { password, ...result } = newUser['dataValues'];
+    const createdUser = await this.userService.findOneByEmailAndPassword(user.email, pass);
+
+    const newUser = createdUser['dataValues'];
 
     // generate token
-    const token = await this.generateToken(result);
+    const token = await this.generateToken(newUser);
 
     // return the user and the token
-    return { user: result, token };
+    return { user: newUser, token };
   }
 
   private async generateToken(user) {
@@ -73,5 +72,9 @@ export class AuthService {
 
   private async comparePassword(enteredPassword, dbPassword) {
     return await bcrypt.compare(enteredPassword, dbPassword);
+  }
+
+  async getCurrentUser(token: string) {
+    return this.jwtService.verify(token.replace('Bearer ', ''));
   }
 }

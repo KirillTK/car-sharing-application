@@ -9,8 +9,8 @@ import { DatabaseModule } from './core/database/database.module';
 import { UsersModule } from './modules/users/users.module';
 import { AuthModule } from './modules/auth/auth.module';
 import { VehiclesModule } from './modules/vehicles/vehicles.module';
-import { BillsModule } from './modules/bills/bills.module';
-
+import { BillsModule } from './modules/bills/bills.module'; 
+import { ControlController, ControlService } from './controls';
 
 @Module({
   imports: [
@@ -24,7 +24,7 @@ import { BillsModule } from './modules/bills/bills.module';
     VehiclesModule,
     BillsModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
+  controllers: [AppController, ControlController],
+  providers: [AppService, ControlService],
 })
 export class AppModule {}

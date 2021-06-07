@@ -8,6 +8,7 @@ import {
 } from 'sequelize-typescript';
 import { UserRoles } from './user-roles.entity';
 import { UserGender } from './user-gender.entity';
+import { Countries } from './entities';
 
 @Table
 export class User extends Model<User> {
@@ -51,4 +52,14 @@ export class User extends Model<User> {
 
   @BelongsTo(() => UserRoles)
   role: number;
+
+  @ForeignKey(() => Countries)
+  @Column({
+    type: DataType.INTEGER,
+    allowNull: false,
+  })
+  countryId: number;
+
+  @BelongsTo(() => Countries)
+  country: number;
 }
