@@ -89,7 +89,7 @@ export class Vehicle extends Model<Vehicle> {
   @ForeignKey(() => VehicleImages)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
   })
   vehicleImagesId: number;
 

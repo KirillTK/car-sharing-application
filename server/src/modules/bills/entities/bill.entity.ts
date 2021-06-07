@@ -14,6 +14,18 @@ import { Vehicle } from '../../vehicles/vehicle.entity';
 
 @Table
 export class Bill extends Model<Bill> {
+  @Column({
+    type: DataType.DOUBLE,
+    allowNull: false,
+  })
+  totalCost: number;
+
+  @Column({
+    type: DataType.STRING,
+    allowNull: false,
+  })
+  endPlace: string;
+
   @ForeignKey(() => BookingStatus)
   @Column({
     type: DataType.INTEGER,
@@ -37,7 +49,7 @@ export class Bill extends Model<Bill> {
   @ForeignKey(() => PromoCode)
   @Column({
     type: DataType.INTEGER,
-    allowNull: false,
+    allowNull: true,
   })
   promoCodeId: number;
 

@@ -1,4 +1,5 @@
-import { Column, DataType, Model, Table } from 'sequelize-typescript';
+import { Column, DataType, Model, Table, ForeignKey } from 'sequelize-typescript';
+import { User } from '../user.entity';
 
 @Table
 export class UserAccidents extends Model<UserAccidents> {
@@ -8,8 +9,9 @@ export class UserAccidents extends Model<UserAccidents> {
   })
   accident: string;
 
+  @ForeignKey(() => User)
   @Column({
-    type: DataType.NUMBER,
+    type: DataType.INTEGER,
     allowNull: false,
   })
   userId: number;
