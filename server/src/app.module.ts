@@ -15,7 +15,7 @@ import { BillsModule } from './modules/bills/bills.module';
 @Module({
   imports: [
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', '..', 'front', 'build'),
+      rootPath: join(__dirname, '..', 'build'),
     }),
     ConfigModule.forRoot({ isGlobal: true }),
     DatabaseModule,
