@@ -44,6 +44,7 @@ export const VehiclesList = () => {
       <img
         alt={name}
         src={image}
+        style={{ maxHeight: 155 }}
       />
     }
     actions={[

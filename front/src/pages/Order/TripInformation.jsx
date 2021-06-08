@@ -1,5 +1,6 @@
 import React, { useCallback } from 'react';
 import { Form, Input, InputNumber  } from 'antd';
+import styles from './styles.module.less';
 
 
 const { useForm } = Form;
@@ -30,7 +31,7 @@ export const TripInformation = ({ handleSubmit, previousValues = {}, vehicle }) 
   }, [form, handleChangeForm, vehicle]);
 
   // bookingStatusId, paymentId, promoCodeId = null, userId, vehicleId
-  return <Form form={form} onFinish={handleSubmit} initialValues={initialValues2}>
+  return <Form form={form} onFinish={handleSubmit} initialValues={initialValues2} className={styles.tripInformation}>
     <Form.Item name="endPlace" label="End place" rules={[{ required: true }]}>
       <Input onChange={handleChangeForm} />
     </Form.Item>

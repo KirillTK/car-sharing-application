@@ -19,12 +19,13 @@ export const HistoryRecors = () => {
     return history.map( bill => {
       const { vehicle, payment, totalCost, endPlace, createdAt } = bill;
 
-      return <Col xs={4}><Card
+      return <Col xs={6}><Card
       style={{ width: 300, margin: '0 auto' }}
       cover={
         <img
           alt={vehicle.name}
           src={vehicle.image}
+          style={{ maxHeight: 155 }}
         />
       }
       actions={[
