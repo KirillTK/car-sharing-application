@@ -12,6 +12,7 @@ import { TripInformation } from './TripInformation';
 import styles from './styles.module.less';
 import { billVehicle } from '../../actions/billActions';
 import { useHistory } from 'react-router';
+import {uiSlice} from "../../reducers/ui.reducer";
 
 const { Step } = Steps;
 
@@ -77,6 +78,9 @@ export const Order = ({ match: { params: { id }}}) => {
       vehicleId: +id,
       userId: user?.id,
     }));
+
+    dispatch(uiSlice.actions.hideModal());
+    dispatch(uiSlice.actions.clearModalParams());
 
     history.push('/');
   } : next;

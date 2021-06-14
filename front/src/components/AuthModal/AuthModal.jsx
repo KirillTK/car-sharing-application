@@ -32,6 +32,9 @@ export const AuthModal = () => {
 
     if(!modalParams?.withoutRedirect) {
       history.push(`order/${modalParams?.id}`);
+    } else {
+      dispatch(uiSlice.actions.hideModal());
+      dispatch(uiSlice.actions.clearModalParams());
     }
 
   }, [dispatch, history, modalParams]);

@@ -36,7 +36,8 @@ export const Header = () => {
   }, [dispatch]);
 
   const handleSignIn = useCallback( () => {
-    dispatch(uiSlice.actions.showModal(MODALS.auth, { withoutRedirect: true }));
+    dispatch(uiSlice.actions.showModal(MODALS.auth));
+    dispatch(uiSlice.actions.setModalParams({ withoutRedirect: true }));
   }, [dispatch]);
 
   const isAdminRole  = isAdmin(user?.role.name );
