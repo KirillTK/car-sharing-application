@@ -10,5 +10,10 @@ export const MainLayout = ({ children }) => {
   <Layout className={styles.mainSection}>
     {children}
   </Layout>
+  <Layout.Footer className={styles.appFooter}>
+      <a href="mailto:carsharinghelp@gmail.com">
+      Need help?
+      </a>
+  </Layout.Footer>
 </Layout>;
 }
